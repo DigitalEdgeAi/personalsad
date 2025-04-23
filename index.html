@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Listings Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for dark, elegant, romantic theme */
+        body {
+            font-family: 'Cormorant Garamond', serif; /* Elegant body font */
+            background-color: #1a1a2e; /* Deep dark background */
+            color: #e0e0e0; /* Light text color for contrast */
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif; /* Romantic heading font */
+            color: #f4e8d1; /* Soft gold/cream for headings */
+        }
+        .container {
+            background-color: #2a2a4a; /* Slightly lighter dark background for container */
+            border-color: #4a4a6a; /* Subtle border color */
+        }
+        .border-gray-200 {
+             border-color: #4a4a6a; /* Apply border color to sections */
+        }
+        .text-gray-800 {
+            color: #f4e8d1; /* Apply heading color to main titles */
+        }
+         .text-gray-700 {
+            color: #d0d0d0; /* Lighter gray for labels and descriptions */
+        }
+        .text-gray-600 {
+            color: #b0b0b0; /* Muted gray for inactive links */
+        }
+        .text-blue-600 {
+            color: #f4e8d1; /* Soft gold for active links */
+        }
+        .hover\:text-blue-800:hover {
+            color: #fff; /* White on hover for active link */
+        }
+         .hover\:text-gray-800:hover {
+            color: #e0e0e0; /* Lighter gray on hover for inactive link */
+        }
+
+        /* Form element styling */
+        input[type="text"], input[type="number"], select, textarea {
+            background-color: #3a3a5a; /* Darker input background */
+            border-color: #5a5a7a; /* Input border color */
+            color: #e0e0e0; /* Input text color */
+            padding: 0.75rem; /* Increased padding */
+            border-radius: 0.5rem; /* More rounded corners */
+        }
+         input[type="file"]::file-selector-button {
+            @apply bg-purple-600 text-white py-2 px-4 rounded-md cursor-pointer hover:bg-purple-700 transition duration-200 ease-in-out; /* Romantic color for file input button */
+        }
+        .focus\:ring-blue-500:focus {
+            --tw-ring-color: #8a2be2; /* Purple ring on focus */
+        }
+
+        /* Button Styling */
+        .bg-green-500 {
+            background-color: #8a2be2; /* Romantic purple for post button */
+        }
+        .hover\:bg-green-600:hover {
+            background-color: #9932cc; /* Darker purple on hover */
+        }
+         .focus\:ring-green-500:focus {
+            --tw-ring-color: #8a2be2; /* Purple ring on focus */
+        }
+         .bg-blue-500 {
+            background-color: #c71585; /* Romantic pink for view details button */
+        }
+        .hover\:bg-blue-600:hover {
+            background-color: #d02090; /* Darker pink on hover */
+        }
+         .focus\:ring-blue-500:focus {
+            --tw-ring-color: #c71585; /* Pink ring on focus */
+        }
+         .bg-purple-500 { /* New style for Message button */
+             background-color: #9370db; /* Medium purple */
+         }
+         .hover\:bg-purple-600:hover { /* New style for Message button hover */
+             background-color: #a07ad1; /* Lighter medium purple */
+         }
+          .focus\:ring-purple-500:focus { /* New style for Message button focus */
+            --tw-ring-color: #9370db; /* Medium purple ring on focus */
+        }
+
+
+        /* Listing Card Styling */
+        .bg-gray-100 {
+            background-color: #3a3a5a; /* Dark background for cards */
+        }
+        .text-green-600 {
+            color: #f08080; /* Light coral/pink for price */
+        }
+         .text-gray-500 {
+            color: #a0a0a0; /* Muted gray for category */
+        }
+
+        /* Simulation Message */
+        .bg-blue-100 {
+            background-color: #4a4a6a; /* Darker background for message */
+            color: #e0e0e0; /* Lighter text for message */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="p-6">
+
+    <div class="container mx-auto p-8 rounded-lg shadow-lg">
+
+        <nav class="mb-8 pb-4 border-b">
+            <ul class="flex justify-center space-x-6 flex-wrap">
+                <li><a href="#" id="homeLink" class="text-gray-600 hover:text-gray-800">Home</a></li>
+                <li><a href="#" id="listingsLink" class="text-blue-600 hover:text-blue-800 font-semibold">Listings</a></li>
+                <li><a href="#" id="postLink" class="text-gray-600 hover:text-gray-800">Post Listing</a></li>
+                <li><a href="#" id="profileLink" class="text-gray-600 hover:text-gray-800">Profile</a></li>
+                <li><a href="#" id="messageLink" class="text-gray-600 hover:text-gray-800">Message</a></li>
+            </ul>
+        </nav>
+
+        <div id="homePage" class="hidden">
+            <h1 class="text-3xl font-bold mb-6 text-center">Welcome to Romantic Listings</h1>
+            <p class="text-center text-gray-700">This is the home page. You can add introductory content or featured listings here.</p>
+             <div class="mt-8 text-center">
+                <p class="text-xl font-semibold mb-4">Featured Categories</p>
+                <div class="flex justify-center space-x-4">
+                    <span class="bg-purple-500 text-white py-2 px-4 rounded-full text-sm">Services</span>
+                    <span class="bg-pink-500 text-white py-2 px-4 rounded-full text-sm">Experiences</span>
+                    <span class="bg-teal-500 text-white py-2 px-4 rounded-full text-sm">Items</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="listingsPage" class="">
+            <h1 class="text-3xl font-bold mb-6 text-center">Available Listings</h1>
+
+            <div id="listingsArea" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+        </div>
+
+        <div id="listingDetailPage" class="hidden">
+             <button id="backToListingsBtn" class="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition duration-200 ease-in-out mb-6">Back to Listings</button>
+            <div id="listingDetailContent" class="bg-gray-100 p-6 rounded-md shadow-sm">
+                </div>
+        </div>
+
+
+        <div id="postListingPage" class="hidden">
+            <h1 class="text-3xl font-bold mb-6 text-center">Post Your Product or Service</h1>
+
+            <div class="mb-8 p-6 border rounded-md">
+                <h2 class="text-2xl font-semibold mb-4">Listing Details</h2>
+
+                <div class="mb-4">
+                    <label for="listingTitle" class="block font-medium mb-2">Title:</label>
+                    <input type="text" id="listingTitle" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter a catchy title for your listing">
+                </div>
+
+                <div class="mb-4">
+                    <label for="listingDescription" class="block font-medium mb-2">Description:</label>
+                    <textarea id="listingDescription" rows="6" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Provide a detailed description of your product or service..."></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label for="listingPrice" class="block font-medium mb-2">Price (Optional):</label>
+                    <input type="number" id="listingPrice" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter price (e.g., 100.00)">
+                </div>
+
+                <div class="mb-4">
+                    <label for="listingCategory" class="block font-medium mb-2">Category:</label>
+                    <select id="listingCategory" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select a Category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="services">Services</option>
+                        <option value="real_estate">Real Estate</option>
+                        <option value="vehicles">Vehicles</option>
+                        <option value="home_garden">Home & Garden</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="contactInfo" class="block font-medium mb-2">Contact Information:</label>
+                    <input type="text" id="contactInfo" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email or phone number">
+                </div>
+
+                <div class="mb-4">
+                    <label for="listingImages" class="block font-medium mb-2">Upload Images:</label>
+                    <input type="file" id="listingImages" accept="image/*" multiple class="mb-4">
+                    <div id="imagePreview" class="flex flex-wrap gap-4">
+                        </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button id="postListingBtn" class="bg-green-500 text-white font-bold py-3 px-6 rounded-md hover:bg-green-600 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity50">
+                    Post Listing
+                </button>
+            </div>
+
+            <div id="simulationMessage" class="mt-8 p-4 rounded-md hidden">
+                <p class="text-center">Listing simulation complete! (In a real app, your listing would be processed and posted.)</p>
+            </div>
+        </div>
+
+         <div id="profilePage" class="hidden">
+            <h1 class="text-3xl font-bold mb-6 text-center">User Profile</h1>
+            <div class="bg-gray-100 p-6 rounded-md shadow-sm max-w-md mx-auto">
+                <h2 class="text-2xl font-semibold mb-4">Your Information</h2>
+                <p class="text-gray-700 mb-2"><strong>Name:</strong> Romantic User</p>
+                <p class="text-gray-700 mb-2"><strong>Email:</strong> user@example.com</p>
+                <p class="text-gray-700 mb-2"><strong>Member Since:</strong> April 2023</p>
+                <h3 class="text-xl font-semibold mt-6 mb-3">Your Listings</h3>
+                <ul id="userListings" class="list-disc list-inside text-gray-700">
+                    <li>No listings posted yet.</li>
+                </ul>
+            </div>
+        </div>
+
+         <div id="messagePage" class="hidden">
+            <h1 class="text-3xl font-bold mb-6 text-center">Messages</h1>
+            <div class="bg-gray-100 p-6 rounded-md shadow-sm max-w-lg mx-auto">
+                <h2 class="text-2xl font-semibold mb-4">Your Conversations</h2>
+                <ul id="messageList" class="space-y-4 text-gray-700">
+                    <li class="border-b border-gray-600 pb-4">
+                        <p class="font-semibold">Conversation with: Listing Seller</p>
+                        <p class="text-sm text-gray-500">Subject: Inquiry about Candlelight Dinner Set</p>
+                        <p class="mt-2">Hello, is this item still available?</p>
+                    </li>
+                     <li class="border-b border-gray-600 pb-4">
+                        <p class="font-semibold">Conversation with: Service Provider</p>
+                        <p class="text-sm text-gray-500">Subject: Question about Couple's Massage</p>
+                        <p class="mt-2">What are your available dates next week?</p>
+                    </li>
+                    <li>No new messages.</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        // Basic JavaScript for UI interaction and page switching
+        const homeLink = document.getElementById('homeLink');
+        const listingsLink = document.getElementById('listingsLink');
+        const postLink = document.getElementById('postLink');
+        const profileLink = document.getElementById('profileLink');
+        const messageLink = document.getElementById('messageLink');
+
+        const homePage = document.getElementById('homePage');
+        const listingsPage = document.getElementById('listingsPage');
+        const listingDetailPage = document.getElementById('listingDetailPage'); // New detail page div
+        const postListingPage = document.getElementById('postListingPage');
+        const profilePage = document.getElementById('profilePage');
+        const messagePage = document.getElementById('messagePage');
+
+        const listingsArea = document.getElementById('listingsArea'); // Area to display listings
+        const listingDetailContent = document.getElementById('listingDetailContent'); // Area to display listing details
+        const backToListingsBtn = document.getElementById('backToListingsBtn'); // Back button
+        const userListings = document.getElementById('userListings'); // Area to display user's listings
+
+        const listingTitleInput = document.getElementById('listingTitle');
+        const listingDescriptionInput = document.getElementById('listingDescription');
+        const listingPriceInput = document.getElementById('listingPrice');
+        const listingCategorySelect = document.getElementById('listingCategory');
+        const contactInfoInput = document.getElementById('contactInfo');
+        const listingImagesInput = document.getElementById('listingImages');
+        const imagePreviewContainer = document.getElementById('imagePreview');
+        const postListingBtn = document.getElementById('postListingBtn');
+        const simulationMessage = document.getElementById('simulationMessage');
+
+
+        // Array to store temporary listings (in browser memory)
+        let listings = [];
+
+        // Function to show a specific page and hide others
+        function showPage(pageToShow) {
+            homePage.classList.add('hidden');
+            listingsPage.classList.add('hidden');
+            listingDetailPage.classList.add('hidden'); // Hide detail page
+            postListingPage.classList.add('hidden');
+            profilePage.classList.add('hidden');
+            messagePage.classList.add('hidden');
+
+
+            pageToShow.classList.remove('hidden');
+
+            // Update active link styling
+            homeLink.classList.remove('text-blue-600', 'font-semibold');
+            listingsLink.classList.remove('text-blue-600', 'font-semibold');
+            postLink.classList.remove('text-blue-600', 'font-semibold');
+            profileLink.classList.remove('text-blue-600', 'font-semibold');
+            messageLink.classList.remove('text-blue-600', 'font-semibold');
+
+            homeLink.classList.add('text-gray-600');
+            listingsLink.classList.add('text-gray-600');
+            postLink.classList.add('text-gray-600');
+            profileLink.classList.add('text-gray-600');
+            messageLink.classList.add('text-gray-600');
+
+
+            if (pageToShow === homePage) {
+                homeLink.classList.add('text-blue-600', 'font-semibold');
+                homeLink.classList.remove('text-gray-600');
+            } else if (pageToShow === listingsPage) {
+                listingsLink.classList.add('text-blue-600', 'font-semibold');
+                listingsLink.classList.remove('text-gray-600');
+                 renderListings(); // Render listings when the listings page is shown
+            }
+             else if (pageToShow === postListingPage) {
+                postLink.classList.add('text-blue-600', 'font-semibold');
+                postLink.classList.remove('text-gray-600');
+            }
+             else if (pageToShow === profilePage) {
+                profileLink.classList.add('text-blue-600', 'font-semibold');
+                profileLink.classList.remove('text-gray-600');
+                 renderUserListings(); // Render user's listings when profile page is shown
+            }
+             else if (pageToShow === messagePage) {
+                messageLink.classList.add('text-blue-600', 'font-semibold');
+                messageLink.classList.remove('text-gray-600');
+            }
+            // No active link styling for the detail page as it's accessed from listings
+        }
+
+        // Function to render listings on the Listings page
+        function renderListings() {
+            listingsArea.innerHTML = ''; // Clear current listings
+
+            if (listings.length === 0) {
+                listingsArea.innerHTML = '<p class="text-center text-gray-700 col-span-full">No listings available yet. Be the first to post!</p>';
+                return;
+            }
+
+            listings.forEach((listing, index) => { // Added index to uniquely identify listings
+                const listingCard = `
+                    <div class="bg-gray-100 p-4 rounded-md shadow-sm">
+                        <img src="${listing.imageUrl || 'https://placehold.co/300x200/4a4a6a/f4e8d1?text=No+Image'}" alt="${listing.title}" class="w-full h-40 object-cover rounded-md mb-4">
+                        <h3 class="text-xl font-semibold mb-2">${listing.title}</h3>
+                        <p class="text-gray-700 mb-3">${listing.description.substring(0, 100)}...</p> <p class="text-green-600 font-bold mb-3">${listing.price ? '$' + listing.price.toFixed(2) : 'Contact for Price'}</p>
+                        <p class="text-sm text-gray-500">Category: ${listing.category || 'N/A'}</p>
+                        <div class="flex space-x-2 mt-4">
+                             <button class="view-details-btn bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out" data-index="${index}">View Details</button>
+                             <button class="message-btn bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 transition duration-200 ease-in-out" data-contact="${listing.contact}" data-title="${listing.title}">Message</button>
+                        </div>
+                    </div>
+                `;
+                listingsArea.innerHTML += listingCard;
+            });
+
+             // Re-attach event listeners to the new buttons
+            attachButtonListeners();
+        }
+
+        // Function to render a single listing's details
+        function renderListingDetail(listing) {
+            listingDetailContent.innerHTML = `
+                <h1 class="text-3xl font-bold mb-4">${listing.title}</h1>
+                 <img src="${listing.imageUrl || 'https://placehold.co/600x400/4a4a6a/f4e8d1?text=No+Image'}" alt="${listing.title}" class="w-full h-64 object-cover rounded-md mb-6">
+                <p class="text-gray-700 mb-4">${listing.description}</p>
+                <p class="text-green-600 font-bold mb-4">${listing.price ? '$' + listing.price.toFixed(2) : 'Contact for Price'}</p>
+                <p class="text-sm text-gray-500 mb-4">Category: ${listing.category || 'N/A'}</p>
+                 <p class="text-sm text-gray-500 mb-6">Contact: ${listing.contact}</p>
+                 <button class="message-btn bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 transition duration-200 ease-in-out" data-contact="${listing.contact}" data-title="${listing.title}">Message about this listing</button>
+            `;
+
+             // Re-attach event listener to the message button on the detail page
+             attachMessageButtonListeners();
+        }
+
+
+        // Function to render user's listings on the Profile page
+        function renderUserListings() {
+             userListings.innerHTML = ''; // Clear current user listings
+
+             const usersListings = listings; // In a real app, filter by user
+
+             if (usersListings.length === 0) {
+                 userListings.innerHTML = '<li>No listings posted yet.</li>';
+                 return;
+             }
+
+             usersListings.forEach(listing => {
+                 const listItem = `<li>${listing.title} - ${listing.price ? '$' + listing.price.toFixed(2) : 'Contact for Price'}</li>`;
+                 userListings.innerHTML += listItem;
+             });
+        }
+
+
+        // Event listeners for navigation links
+        homeLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            showPage(homePage);
+        });
+
+        listingsLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            showPage(listingsPage);
+        });
+
+        postLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            showPage(postListingPage);
+        });
+
+         profileLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            showPage(profilePage);
+        });
+
+         messageLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            showPage(messagePage);
+        });
+
+        // Event listener for the back button on the listing detail page
+        backToListingsBtn.addEventListener('click', function() {
+            showPage(listingsPage);
+        });
+
+
+        // Display image previews when files are selected (for Post Listing page)
+        listingImagesInput.addEventListener('change', function(event) {
+            imagePreviewContainer.innerHTML = ''; // Clear previous previews
+            const files = event.target.files;
+            if (files) {
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const imgWrapper = document.createElement('div');
+                            imgWrapper.classList.add('w-32', 'h-32', 'rounded-md', 'overflow-hidden', 'border', 'border-gray-300', 'flex-shrink-0'); // Fixed size for preview
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.alt = 'Image Preview';
+                            img.classList.add('w-full', 'h-full', 'object-cover');
+                            imgWrapper.appendChild(img);
+                            imagePreviewContainer.appendChild(imgWrapper);
+                        }
+                        reader.readAsDataURL(file);
+                    }
+                }
+            }
+        });
+
+        // Function to attach event listeners to view details and message buttons
+        function attachButtonListeners() {
+             const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+             viewDetailsButtons.forEach(button => {
+                 button.addEventListener('click', function() {
+                     const listingIndex = this.getAttribute('data-index');
+                     const selectedListing = listings[listingIndex];
+                     renderListingDetail(selectedListing);
+                     showPage(listingDetailPage); // Show the detail page
+                 });
+             });
+
+             attachMessageButtonListeners(); // Attach message button listeners as well
+        }
+
+        // Function to attach event listeners to message buttons
+        function attachMessageButtonListeners() {
+             const messageButtons = document.querySelectorAll('.message-btn'); // Select all message buttons
+             messageButtons.forEach(button => {
+                 button.addEventListener('click', function() {
+                     const contactInfo = this.getAttribute('data-contact');
+                     const listingTitle = this.getAttribute('data-title');
+                     alert(`Simulating message about "${listingTitle}" to user with contact: ${contactInfo}. Messaging functionality would be here!`);
+                 });
+             });
+        }
+
+
+        // Simulate listing post on button click (for Post Listing page)
+        postListingBtn.addEventListener('click', function() {
+            // In a real application, you would collect form data and send it to a backend.
+            // For this simulation, we just show a success message and add to our temporary array.
+
+            const title = listingTitleInput.value;
+            const description = listingDescriptionInput.value;
+            const price = parseFloat(listingPriceInput.value); // Convert to number
+            const category = listingCategorySelect.value;
+            const contact = contactInfoInput.value;
+            const imageFile = listingImagesInput.files[0]; // Get the first selected image
+
+            if (!title || !description || !contact) {
+                alert('Please fill in Title, Description, and Contact Information.');
+                return;
+            }
+
+            // Create a temporary listing object
+            const newListing = {
+                title: title,
+                description: description,
+                price: isNaN(price) ? null : price, // Store null if price is not a valid number
+                category: category,
+                contact: contact,
+                imageUrl: imageFile ? URL.createObjectURL(imageFile) : null // Create a temporary URL for the image
+            };
+
+            // Add the new listing to our temporary array
+            listings.push(newListing);
+
+            // Show simulation message
+            simulationMessage.classList.remove('hidden');
+
+            // Clear the form (optional)
+            listingTitleInput.value = '';
+            listingDescriptionInput.value = '';
+            listingPriceInput.value = '';
+            listingCategorySelect.value = '';
+            contactInfoInput.value = '';
+            listingImagesInput.value = ''; // Clear file input
+            imagePreviewContainer.innerHTML = ''; // Clear previews
+
+            // In a real app, you would redirect to the listings page or show a success message
+            // For this simulation, we'll just stay on the post page and show the message.
+        });
+
+        // Initial rendering of listings when the page loads
+        renderListings();
+
+        // Show the Listings page by default when the page loads
+        showPage(listingsPage);
+
+    </script>
+
+</body>
+</html>
