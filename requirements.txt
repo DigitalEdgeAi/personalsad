@@ -1,3 +1,4 @@
 Flask
 Flask-Cors
 gunicorn # Needed for production deployment on platforms like Render
+/opt/render/project/src/app.py pip install -r requirements.tx
